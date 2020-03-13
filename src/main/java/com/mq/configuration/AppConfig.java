@@ -18,7 +18,6 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
-
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 		viewResolver.setViewClass(JstlView.class);
 		viewResolver.setPrefix("/WEB-INF/views/");
@@ -30,5 +29,4 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/static/**").addResourceLocations("/static/");
 	}
-
 }

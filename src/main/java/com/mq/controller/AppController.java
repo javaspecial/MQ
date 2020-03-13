@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.mq.model.Order;
 import com.mq.service.OrderService;
+import com.mq.util.BasicUtil;
 
 @Controller
 public class AppController {
@@ -20,6 +21,7 @@ public class AppController {
 
 	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	public String prepareProduct(ModelMap model) {
+		BasicUtil.runEnvInfo();
 		return "index";
 	}
 
