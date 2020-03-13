@@ -26,13 +26,13 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public void sendOrder(Order order) {
-		LOG.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		LOG.info("----------------------------------------------------");
 		order.setOrderId(BasicUtil.getUniqueId());
 		order.setStatus(OrderStatus.CREATED);
 		orderRepository.putOrder(order);
-		LOG.info("Application : sending order request {}", order);
+		LOG.info("MQ : sending order request {}", order);
 		messageSender.sendMessage(order);
-		LOG.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		LOG.info("----------------------------------------------------");
 	}
 
 	@Override

@@ -13,7 +13,7 @@
 <body>
 
 	<div class="generic-container">
-	<div class="well lead">Welcome to CrazyDeals [With JMS Magic]</div>
+	<div class="well lead">Welcome to our messaging queue system</div>
 			<span class="well floatRight">
 				<a href="<c:url value='/newOrder' />">Place an order</a>
 			</span>
