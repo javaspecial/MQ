@@ -1,3 +1,2 @@
 # MQ
-#Active MQ 
-Order Processing Messaging Queue Application
+Active MQ Order Processing & Messaging Queue Application
