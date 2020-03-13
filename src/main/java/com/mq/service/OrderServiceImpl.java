@@ -14,16 +14,16 @@ import com.mq.model.OrderStatus;
 import com.mq.util.BasicUtil;
 
 @Service("orderService")
-public class OrderServiceImpl implements OrderService{
+public class OrderServiceImpl implements OrderService {
 
 	static final Logger LOG = LoggerFactory.getLogger(OrderServiceImpl.class);
-	
+
 	@Autowired
 	MessageSender messageSender;
-	
+
 	@Autowired
 	OrderRepository orderRepository;
-	
+
 	@Override
 	public void sendOrder(Order order) {
 		LOG.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
@@ -37,19 +37,19 @@ public class OrderServiceImpl implements OrderService{
 
 	@Override
 	public void updateOrder(InventoryResponse response) {
-		
+
 		Order order = orderRepository.getOrder(response.getOrderId());
-		if(response.getReturnCode()==200){
+		if (response.getReturnCode() == 200) {
 			order.setStatus(OrderStatus.CONFIRMED);
-		}else if(response.getReturnCode()==300){
+		} else if (response.getReturnCode() == 300) {
 			order.setStatus(OrderStatus.FAILED);
-		}else{
+		} else {
 			order.setStatus(OrderStatus.PENDING);
 		}
 		orderRepository.putOrder(order);
 	}
-	
-	public Map<String, Order> getAllOrders(){
+
+	public Map<String, Order> getAllOrders() {
 		return orderRepository.getAllOrders();
 	}
 

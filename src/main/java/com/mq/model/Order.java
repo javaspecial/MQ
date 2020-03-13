@@ -4,14 +4,10 @@ import java.io.Serializable;
 
 public class Order implements Serializable {
 
-	private static final long serialVersionUID = -4040687494021698723L;
-
+	private static final long serialVersionUID = 1L;
 	private String orderId;
-	
 	private String productName;
-
 	private int quantity;
-
 	private OrderStatus status;
 
 	public String getOrderId() {
@@ -46,7 +42,6 @@ public class Order implements Serializable {
 		this.status = status;
 	}
 
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -78,5 +73,4 @@ public class Order implements Serializable {
 				+ status + "]";
 	}
 
-	
 }
