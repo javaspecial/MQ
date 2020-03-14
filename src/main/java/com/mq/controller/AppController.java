@@ -47,4 +47,10 @@ public class AppController {
 		model.addAttribute("orders", orderService.getAllOrders());
 		return "orderStatus";
 	}
+
+	@RequestMapping(value = { "/", "/allOrdersForAdminTrack" }, method = RequestMethod.GET)
+	public String getAllOrders(ModelMap model) {
+		model.addAttribute("allOrdersForAdminTrack", orderService.getAllOrders());
+		return "allOrdersForAdminTrack";
+	}
 }

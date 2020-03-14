@@ -59,6 +59,5 @@ public class MessageReceiver {
 
 		LOG.info("Inventory : order confirmed {}", order);
 		LOG.info("----------------------------------------------------");
-
 	}
 }

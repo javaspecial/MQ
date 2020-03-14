@@ -18,6 +18,7 @@ public class MessageSender {
 	@Autowired
 	JmsTemplate jmsTemplate;
 
+	// send order request to inventory
 	public void sendMessage(final Order order) {
 		LOG.info("----------------------------------------------------");
 		LOG.info("MQ: sending order='{}'", order);
@@ -28,6 +29,7 @@ public class MessageSender {
 		LOG.info("----------------------------------------------------");
 	}
 
+	// send inventory response to mq order
 	public void sendMessage(final InventoryResponse inventoryResponse) {
 		LOG.info("----------------------------------------------------");
 		LOG.info("Inventory: sending response='{}'", inventoryResponse);
