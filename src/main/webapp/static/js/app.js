@@ -1,6 +1,7 @@
 var ws;
 function setConnected(connected) {
 	$("#connect").prop("disabled", connected);
+	$("#send").prop("disabled", !connected);
 	$("#disconnect").prop("disabled", !connected);
 	if (connected) {
 		$("#conversation").show();
@@ -17,6 +18,7 @@ function connect() {
 			showGreeting(data.data);
 		}
 		setConnected(true);
+		alert("Connected!");
 		console.log("Connected");
 	} catch (e) {
 		alert(e);
@@ -33,7 +35,7 @@ function disconnect() {
 
 function sendToServer() {
 	var data = JSON.stringify({
-		'name' : $("#name").val()
+		'client' : $("#name").val()
 	})
 	ws.send(data);
 }
@@ -54,5 +56,6 @@ $(function() {
 	});
 	$("#send").click(function() {
 		sendToServer();
+		$("#name").prop("value", "");
 	});
 });
