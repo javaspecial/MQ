@@ -14,13 +14,13 @@ public class MessagingListnerConfiguration {
 
 	@Autowired
 	ConnectionFactory connectionFactory;
-	
+
 	@Bean
-    public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
-        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
-        factory.setConnectionFactory(connectionFactory);
-        factory.setConcurrency("1-1");
-        return factory;
-    }
+	public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
+		DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+		factory.setConnectionFactory(connectionFactory);
+		factory.setConcurrency("1-1");
+		return factory;
+	}
 
 }

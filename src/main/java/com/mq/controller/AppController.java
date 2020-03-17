@@ -48,9 +48,9 @@ public class AppController {
 		return "orderStatus";
 	}
 
-	@RequestMapping(value = { "/", "/allOrdersForAdminTrack" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "/webSocket" }, method = RequestMethod.GET)
 	public String getAllOrders(ModelMap model) {
 		model.addAttribute("allOrdersForAdminTrack", orderService.getAllOrders());
-		return "allOrdersForAdminTrack";
+		return "webSocket";
 	}
 }

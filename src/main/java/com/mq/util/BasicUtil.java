@@ -21,7 +21,8 @@ public class BasicUtil {
 			File file = ResourceUtils.getFile("classpath:application.properties");
 			InputStream in = new FileInputStream(file);
 			properties.load(in);
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			LOG.error(e.getMessage());
 		}
 		return properties;
@@ -30,8 +31,8 @@ public class BasicUtil {
 	public static void runEnvInfo() {
 		Properties prop = fetchProperties();
 		LOG.info("----------------------------------------------------");
-		LOG.info("App name='{}'", prop.getProperty("app.name", "Active MQ"));
-		LOG.info("App version='{}'", prop.getProperty("app.verion", "Version 1.0.0"));
+		LOG.info("App name='{}'", prop.getProperty("app.name", "App name not found"));
+		LOG.info("App version='{}'", prop.getProperty("app.verion", "App version unavailable"));
 		LOG.info("----------------------------------------------------");
 	}
 

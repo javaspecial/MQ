@@ -1,4 +1,4 @@
-package com.mq.messaging;
+package com.mq.component;
 
 import javax.jms.JMSException;
 
@@ -11,9 +11,9 @@ import org.springframework.messaging.MessageHeaders;
 import org.springframework.stereotype.Component;
 
 import com.mq.model.InventoryResponse;
-import com.mq.service.OrderService;
-import com.mq.service.OrderInventoryService;
 import com.mq.model.Order;
+import com.mq.service.OrderInventoryService;
+import com.mq.service.OrderService;
 
 @Component
 public class MessageReceiver {
@@ -26,7 +26,10 @@ public class MessageReceiver {
 	OrderService orderService;
 	@Autowired
 	OrderInventoryService orderInventoryService;
+	@Autowired
+	WebSoceketHandler clientWebSoceketController;
 
+	// received response from inventory and send message to client
 	@JmsListener(destination = ORDER_RESPONSE_QUEUE)
 	public void receiveResponseMessage(final Message<InventoryResponse> message) throws JMSException {
 		LOG.info("----------------------------------------------------");
@@ -40,10 +43,13 @@ public class MessageReceiver {
 
 		orderService.updateOrder(response);
 
+		clientWebSoceketController.sendSocketToClient(response);
+
 		LOG.info("MQ : order updated", response);
 		LOG.info("----------------------------------------------------");
 	}
 
+	// order received from mq to process order
 	@JmsListener(destination = ORDER_QUEUE)
 	public void receiveOrderMessage(final Message<Order> message) throws JMSException {
 		LOG.info("----------------------------------------------------");
