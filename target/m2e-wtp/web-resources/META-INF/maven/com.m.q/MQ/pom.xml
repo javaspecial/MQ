@@ -9,7 +9,7 @@
 	<name>MQ Maven Webapp</name>
 
 	<properties>
-		<springframework.version>4.3.0.RELEASE</springframework.version>
+		<springframework.version>5.3.19</springframework.version>
 	</properties>
 
 	<dependencies>
